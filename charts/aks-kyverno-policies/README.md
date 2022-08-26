@@ -212,6 +212,22 @@ In order to remove the solution you need to run the following command:
 helm uninstall aks-kyverno-policies --namespace kyverno
 ```
 
+## You can always look at API logs for events, that shows whats happneing 
+Below are sample events for Policy violation and warning with block and pass events 
+```bash
+ Normal    PolicyApplied     clusterpolicy/restrict-sysctls                    Pod default/nginx-xxxxxxxxxx-zzzzz: pass
+ Normal    PolicyApplied     clusterpolicy/restrict-host-namespaces            Pod default/nginx-xxxxxxxxxx-zzzzz: pass
+ Normal    PolicyApplied     clusterpolicy/restrict-proc-mount                 Pod default/nginx-xxxxxxxxxx-zzzzz: pass
+ Normal    PolicyApplied     clusterpolicy/restrict-selinux                    Pod default/nginx-xxxxxxxxxx-zzzzz: pass
+ Normal    PolicyApplied     clusterpolicy/restrict-cri-socket-mounts          Pod default/nginx-xxxxxxxxxx-zzzzz: pass
+ Normal    PolicyApplied     clusterpolicy/restrict-privileged-containers      Pod default/nginx-xxxxxxxxxx-zzzzz: pass
+ Warning   PolicyViolation   clusterpolicy/restrict-default-namespace          Pod default/nginx-xxxxxxxxxx-zzzzz: [validate-namespace] fail (blocked)
+ Warning   PolicyViolation   clusterpolicy/restrict-default-namespace          Pod default/deploynginx-xxxxxxxxxx-zzzzz: [validate-namespace] fail
+ ```
+
+DO rember **PodSecurityPolicy** is deprecated in v1.21+, unavailable in **v1.25+**
+
+
 ## Kyverno Documentation
 
 * [Kyverno]
