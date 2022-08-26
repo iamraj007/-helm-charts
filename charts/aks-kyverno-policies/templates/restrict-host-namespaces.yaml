@@ -1,0 +1,41 @@
+{{ if .Values.policies.restrictHostNamespaces.enabled }}
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: restrict-host-namespaces
+  annotations:
+    pod-policies.kyverno.io/autogen-controllers: none
+spec:
+  validationFailureAction: {{ .Values.policies.restrictHostNamespaces.validationFailureAction }}
+  background: {{ .Values.policies.restrictHostNamespaces.background }}
+  rules:
+  - name: host-namespaces
+    match:
+      resources:
+        kinds:
+        - Pod
+    {{- if or .Values.policies.restrictHostNamespaces.excludeSystemNamespaces  .Values.policies.restrictHostNamespaces.excludedNamespaces }}    
+    exclude:
+      resources:
+        namespaces:
+        {{- if .Values.policies.restrictHostNamespaces.excludeSystemNamespaces }}
+        {{- range .Values.systemNamespaces }}
+        - {{ . }}
+        {{- end }}
+        {{- end }}
+        {{- if .Values.policies.restrictHostNamespaces.excludedNamespaces }}
+        {{- range .Values.policies.restrictHostNamespaces.excludedNamespaces }}
+        - {{ . }}
+        {{- end }}
+        {{- end }}
+    {{- end }}              
+    validate:
+      message: >-
+        Sharing the host namespaces is disallowed. The fields spec.hostNetwork,
+        spec.hostIPC, and spec.hostPID must not be set to true.
+      pattern:
+        spec:
+          =(hostPID): "false"
+          =(hostIPC): "false"
+          =(hostNetwork): "false"
+{{ end }}
