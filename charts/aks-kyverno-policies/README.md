@@ -160,7 +160,7 @@ policies.restrictCustomRuntimes.excludedNamespaces | List of namespaces to which
 policies.restrictCustomRuntimes.validationFailureAction | Policy action acceptable values `audit` or `enforce` | audit
 policies.restrictCustomRuntimes.background | Controls if rules are applied to existing resources | true
 
-## Deploy and Upgrade Kyverno Policies
+## Deploy and Upgrade Kyverno Policies:
 
 > Note: It's recommended to first deploy the policies in audit mode `policies.*.validationFailureAction: audit` to make sure that everything is working as expected and not breaking existing deployments.
 
@@ -183,7 +183,7 @@ helm pull sysadminas/aks-kyverno-policies --untar # Pull Helm Chart and unpack i
 helm upgrade aks-kyverno-policies aks-kyverno-policies --namespace kyverno -i # Run after you adjusted values in helm config file or pass your own values file with -f option
 ```
 
-## Review Policy Reports
+## Review Policy Reports:
 
 To list all the policies that are applied to your cluster run the following:
 
@@ -204,7 +204,7 @@ kubectl describe polr -A | grep -i "Result: \+fail" -B10 # Review all failed pol
 kubectl describe polr -n <namespace> | grep -i "Result: \+fail" -B10 # Review failed policies for specific namespace
 ```
 
-## Remove the solution
+## Remove the solution:
 
 In order to remove the solution you need to run the following command:
 
@@ -228,7 +228,7 @@ Below are sample events for Policy violation and warning with block and pass eve
 DO rember **PodSecurityPolicy** is deprecated in v1.21+, unavailable in **v1.25+**
 
 
-## Kyverno Documentation
+## Kyverno Documentation:
 
 * [Kyverno]
 
