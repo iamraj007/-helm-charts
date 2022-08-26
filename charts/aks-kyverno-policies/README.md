@@ -2,7 +2,7 @@
 
 ## Description
 
-Current repository contains a Helm chart which deploys a configurable [Kyverno] policies which will help secure and manage AKS (Azure Kubernetes Cluster) cluster. Chart contains more than 20 policies which might be useful to secure and ease your AKS cluster management. They will help to cover a PSP deprecation, restrict LB service to internal only, control allowed container registries, control labels etc. Also helps to automate creation of such things as limit ranges, network policies, etc.
+Current repository contains a Helm chart which deploys a configurable Kyverno policies which will help secure and manage AKS (Azure Kubernetes Cluster) cluster. Chart contains more than 20 policies which might be useful to secure and ease your AKS cluster management. They will help to cover a PSP deprecation(deprecated and will be removed in v1.25), restrict LB service to internal only, control allowed container registries, control labels etc. Also helps to automate creation of such things as limit ranges, network policies, etc.
 
 ## Motivation
 
