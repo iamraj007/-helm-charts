@@ -164,9 +164,10 @@ policies.restrictCustomRuntimes.background | Controls if rules are applied to ex
 
 > Note: It's recommended to first deploy the policies in audit mode `policies.*.validationFailureAction: audit` to make sure that everything is working as expected and not breaking existing deployments.
 
+Inorder to find all ClusterPolicy set on cluster run the following:
+
 ```bash
-helm repo add sysadminas https://sysadminas.eu/helm-charts/ # Add sysadminas Helm Chart Repository
-helm repo update # Update Helm Chart Repositories
+kubectl get clusterpolicy
 ```
 
 In case you satisfied with default settings run the following:
@@ -187,7 +188,7 @@ helm upgrade aks-kyverno-policies aks-kyverno-policies --namespace kyverno -i # 
 To list all the policies that are applied to your cluster run the following:
 
 ```bash
-kubeclt get clusterpolicies.kyverno.io
+kubectl get clusterpolicies.kyverno.io
 ```
 
 To review policy validation report run the following:
