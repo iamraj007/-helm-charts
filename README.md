@@ -6,7 +6,7 @@ Kyverno (Greek for “govern”) is a policy engine designed specifically for Ku
 Kyverno allows cluster administrators to manage environment specific configurations independently of workload configurations and enforce configuration best practices for their clusters. Kyverno can be used to scan existing workloads for best practices, or can be used to enforce best practices by blocking or mutating API requests.
 
 
-## How Kyverno works
+## How Kyverno works:
 Kyverno runs as a dynamic admission controller in a Kubernetes cluster. Kyverno receives validating and mutating admission webhook HTTP callbacks from the kube-apiserver and applies matching policies to return results that enforce admission policies or reject requests.
 
 ## Install steps for Kyverno on cluster (via single yaml file or you can also use helm chart)
