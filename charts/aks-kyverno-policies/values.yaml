@@ -4,6 +4,10 @@ systemNamespaces:
   - kube-public
   - kube-node-lease
   - kyverno
+  - gatekeeper-system
+  - calico-system
+  - tigera-operator
+  - policy-reporter
 
 # Policy configuration area
 policies:
